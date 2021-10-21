@@ -21,6 +21,7 @@ function create(e)
         var newItem = document.createElement('li')
         newItem.innerHTML = todoinput.value;
         todoinput.value = "";
+        todoinput.focus();
         newItem.classList.add('todo-listItem');
         newDiv.appendChild(newItem);
 

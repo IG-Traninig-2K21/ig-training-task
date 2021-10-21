@@ -38,19 +38,23 @@ form input{
     min-width: 20rem;
     height: 35px;
     border: none;
+    border-bottom: 3px solid #A683E3;
     outline: none;
-    padding: 10px;
+    padding: 1rem;
     margin-bottom: 2.5rem;
     font-size: 20px;
+    margin-top: 2rem;
 }
 button.todo-btn{
-    height: 35px;
-    min-width: 1.8rem;
+    height: 3rem;
+    min-width: 2.8rem;
     outline: none;
     border: none;
     background-color: #A683E3;
     cursor: pointer;
-    margin-bottom: 2.5rem;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px -5px rgb(0 0 0 / 30%);
+    margin-left: 0.7rem;
 }
 .fas.icon{
     color: white;
@@ -69,13 +73,14 @@ button.todo-btn:hover{
     min-width: 20%;
 }
 .todo{
-    background-color: white;
+    background-color: #F0D9FF;
     display: flex;
     justify-content: space-between;
     align-items: center;
     transition: all .5s ease;
     padding: 0 1rem;
     padding-bottom: 1rem;
+    margin: 0.5rem;
 }
 .todo-listItem{
     flex: 1;
