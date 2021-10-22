@@ -63,11 +63,6 @@ button.todo-btn{
 button.todo-btn:hover{
     background-color: palevioletred;
 }
-/* .todo-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
 .todo-list{
     list-style-type: none;
     min-width: 20%;

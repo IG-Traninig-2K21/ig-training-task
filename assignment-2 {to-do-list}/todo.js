@@ -10,6 +10,13 @@ todolist.onclick = checkdelete;
 
 
 //Function
+window.onload = function x()
+{
+    if(localStorage.getItem("toDoList"))
+    {
+        todolist.innerHTML = localStorage.getItem("toDoList");
+    }
+}
 
 function create(e)
 {
@@ -18,14 +25,13 @@ function create(e)
     {
         var newDiv = document.createElement('div');
         newDiv.classList.add('todo');
-
-        var newItem = document.createElement('li')
+        var newItem = document.createElement('li');
         newItem.innerHTML = todoinput.value;
         todoinput.value = "";
         todoinput.focus();
         newItem.classList.add('todo-listItem');
         newDiv.appendChild(newItem);
-
+    
         var checkbtn = document.createElement('button');
         checkbtn.classList.add('checkicon');
         checkbtn.innerHTML = '<i class="fas fa-check"></i>';
@@ -37,12 +43,14 @@ function create(e)
         newDiv.appendChild(deletebtn);
 
         todolist.appendChild(newDiv);
+
+        //localstorage
+        localStorage.setItem("toDoList", todolist.innerHTML);
     }
     else
     {
         alert("Please enter any list item!");
-    }
-    
+    }   
 }
 
 function checkdelete(e)
@@ -51,6 +59,7 @@ function checkdelete(e)
     if(item.classList[0]==="deleteicon")
     {
         item.parentNode.remove();
+        localStorage.setItem("toDoList", todolist.innerHTML);
     }
     if(item.classList[0]==="checkicon")
     {
