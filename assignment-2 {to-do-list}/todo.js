@@ -10,6 +10,7 @@ todolist.onclick = checkdelete;
 
 
 //Function
+
 function create(e)
 {
     e.preventDefault();
