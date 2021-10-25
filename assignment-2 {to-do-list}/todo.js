@@ -64,5 +64,6 @@ function checkdelete(e)
     if(item.classList[0]==="checkicon")
     {
         item.parentNode.classList.toggle('completed');
+        localStorage.setItem("toDoList", todolist.innerHTML);
     }
 }
