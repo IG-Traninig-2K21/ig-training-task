@@ -34,24 +34,26 @@ body {
   font-family: "Saira Stencil One", cursive;
 }
 #hangmanPic {
-  margin-top: 12rem;
+  margin-top: 10rem;
 }
-/* #keyboard button:hover{
-    background-color: ;
-} */
+#keyboard button:hover{
+    background-color: #F2BB7B;
+    font-weight: bolder;
+}
 .container #guess-para {
   margin-top: 3rem;
   font-family: "Germania One", cursive;
   font-size: 1.5rem;
 }
-.start-bn {
-  margin-top: 3rem;
+.start-btn {
+  margin: 3rem 0;
 }
 .float-right{
     position: absolute;
-    top: 20%;
+    top: 23%;
     right:25%
 }
 .float-right p{
     font-family: 'Germania One', cursive;
+    font-size: 1.4rem;
 }

@@ -50,6 +50,7 @@ function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
   document.getElementById(chosenLetter).setAttribute('disabled', true);
 
+
   if (answer.indexOf(chosenLetter) >= 0) {
     guessedWord();
     checkIfGameWon();
