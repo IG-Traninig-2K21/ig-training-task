@@ -13,12 +13,12 @@ var programming_languages = [
 	"php",
 	"sql",
 	"ruby",
-    "swift",
-    "nodejs",
-    "jquery",
-    "pascal",
-    "perl",
-    "xml"
+  "swift",
+  "nodejs",
+  "jquery",
+  "pascal",
+  "perl",
+  "xml"
 ]
 
 let answer = '';
