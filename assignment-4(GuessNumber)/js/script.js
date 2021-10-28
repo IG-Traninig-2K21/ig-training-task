@@ -53,7 +53,8 @@ function checkGuess(guess){
         document.getElementById("guess").innerHTML=`You Won!! <img src="./images/cheer-cheering.gif"> <br>`;
         userInput.style.display="none";
         submit.style.display="none";
-        // restartBtn.style.display="inlineBlock";
+        var audio = new Audio("./sounds/Game-show-winner-sound-effect.mp3");
+	    audio.play();
         endGame();
     } else if (guess < randomNumber) {
         displayMessage(`Too low! Try again!`);
