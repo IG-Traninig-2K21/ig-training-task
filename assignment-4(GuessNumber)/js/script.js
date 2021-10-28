@@ -72,7 +72,7 @@ function displayMessage(message){
 function endGame(){
     //Clear user input
     userInput.value = '';
-    userInput.focus();
+    input.focus();
     //Disable user input button
     userInput.setAttribute('disabled', '');
     //Display Start new Game Button
