@@ -51,8 +51,9 @@ function checkGuess(guess){
     //Display clue if guess is too high or too low
     if (guess === randomNumber){
         displayMessage(`You guessed correctly!`);
-        winFace.src = "./images/cheering-cute.gif";
-        document.getElementById("guess").innerText="You Won!!";
+        document.getElementById("guess").innerHTML=`You Won!! <img src="./images/cheer-cheering.gif">`;
+        // winFace.src = "./images/cheering-cute.gif";
+        // documnt.createElement("img").
         endGame();
     } else if (guess < randomNumber) {
         displayMessage(`Too low! Try again!`);

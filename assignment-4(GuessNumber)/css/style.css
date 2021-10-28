@@ -228,8 +228,8 @@ button {
 }
 
 #guess img{
-    height: 4rem;
-    width: 4rem;
+    height: 4.5rem;
+    width: 5rem;
 }
 
 .guesses {
@@ -278,4 +278,9 @@ label{
     background-color: white;
     color: black;
     margin-left: 3px;
+}
+
+.card-body .detailPara
+{
+    width: 724px;
 }
