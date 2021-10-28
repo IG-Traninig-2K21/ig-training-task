@@ -27,15 +27,19 @@ function validateGuess(guess){
         alert('Please enter a valid number');
     } else if (guess < 1) {
         alert('Please enter a number greater than 0!');
+        userInput.value = '';
     } else if (guess > 100){
-        alert('Please enter a number less than 101!')
+        alert('Please enter a number less than 101!');
+        userInput.value = '';
     } else {
         //Keep record of number of attempted guesses
         previousGuesses.push(guess);
         //Check to see if game is over
-        if (numGuesses === 11){
+        if (numGuesses === 10){
             displayGuesses(guess);
             displayMessage(`Game Over! Number was ${randomNumber}`);
+            var audio = new Audio("./sounds/wrong.mp3");
+	        audio.play();
             endGame();
         } else {
         //Display previous guessed numbers
@@ -55,7 +59,7 @@ function checkGuess(guess){
         submit.style.display="none";
         var audio = new Audio("./sounds/Game-show-winner-sound-effect.mp3");
 	    audio.play();
-        endGame();
+        endGame();   
     } else if (guess < randomNumber) {
         displayMessage(`Too low! Try again!`);
     } else if (guess > randomNumber) {
@@ -68,7 +72,7 @@ function displayGuesses(guess){
     userInput.value = '';
     guessSlot.innerHTML += `<span class="guess_div">${guess}  </span>`;
     numGuesses++;
-    remaining.innerHTML = `${11 - numGuesses}  `;
+    remaining.innerHTML = `${11  - numGuesses}  `;
 }
 
 function displayMessage(message){
@@ -78,18 +82,30 @@ function displayMessage(message){
 function endGame(){
     //Clear user input
     userInput.value = '';
-    input.focus();
     //Disable user input button
     userInput.setAttribute('disabled', '');
     //Display Start new Game Button
           p.classList.add('button');
-          p.innerHTML = `<h1 id="newGame">Start New Game</h1>`
+          p.innerHTML = `<h1 id="newGame">Start New Game</h1>`;
     startOver.appendChild(p);
     playGame = false;
-    restartBtn.hide()
-    newGame();
+    submit.style.display = "none";
+    userInput.style.display="none";
+    if(numGuesses == 11) {
+        endGameShowDispaly();
+    }
+    remove();
 }
-
+function endGameShowDispaly() {
+    console.log("endgame function is here")
+    document.getElementById("guess").innerHTML=`You Lost!! <img src="./images/loss-face.gif"> <br>`;
+}
+function remove() {
+    console.log("remove function works")
+    document.getElementById('prev1').style.display = "none";
+    document.getElementById('guess_remain').style.diaply  = "none";
+    document.getElementById('guess_remain').innerHTML = "";
+}
 function newGame(){
     const newGameButton = document.querySelector('#newGame');
     newGameButton.addEventListener('click', function(){
@@ -117,4 +133,5 @@ restartBtn.addEventListener('click', function(e){
         startOver.removeChild(p);
         playGame = true;       
 });
+
 
