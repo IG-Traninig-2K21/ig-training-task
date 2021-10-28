@@ -48,7 +48,6 @@ function generateButtons() {
 
 function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
-  // document.getElementById(chosenLetter).setAttribute('disabled', true);
   document.getElementById(chosenLetter).style.backgroundColor="#303030";
   document.getElementById(chosenLetter).style.color="#FFF";
   document.getElementById(chosenLetter).style.border="none"
@@ -71,6 +70,8 @@ function updateHangmanPicture() {
 function checkIfGameWon() {
   if (wordStatus === answer) {
     document.getElementById('keyboard').innerHTML = 'You Won!!!';
+    var audio = new Audio("./sounds/Game-show-winner-sound-effect.mp3");
+	  audio.play();
   }
 }
 
@@ -78,6 +79,8 @@ function checkIfGameLost() {
   if (mistakes === maxWrong) {
     document.getElementById('wordSpotlight').innerHTML = 'The answer was: ' + answer;
     document.getElementById('keyboard').innerHTML = 'You Lost!!!';
+    var audio = new Audio("./sounds/wrong.mp3");
+	  audio.play();
   }
 }
 
