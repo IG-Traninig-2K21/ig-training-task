@@ -279,3 +279,8 @@ label{
     color: black;
     margin-left: 3px;
 }
+
+.card-body .detailPara
+{
+    width: 724px;
+}
