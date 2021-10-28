@@ -9,29 +9,28 @@
 </head>
 <body>
     <div class="card card_div" >
+        <div class="card-body">
+            <h1>Number guessing game</h1>
+            <p class="detailPara">Try and guess a random number between 1 and 100.</p>
+            <p class="detailPara">You have 10 attempts to guess the right number.</p>
+            </br>
+            <div id="wrapper">
+                <form class="form">
+                    <label for="guessField" id="guess">Guess a number <img src="./images/thinking_face.gif" alt="thinking image" id="won_face"></label>
+                    <input type="text" id="guessField" placeholder="" class="guessField" autocomplete="off" autofocus>
+                    <input type="submit" id="subt" value="Submit guess" class="guessSubmit">
+                    <input type="submit" id="restart" value="Restart Game" class="restartSubmit">
+                </form>
 
-  <div class="card-body">
-    <h1>Number guessing game</h1>
-    <p class="detailPara">Try and guess a random number between 1 and 100.</p>
-    <p class="detailPara">You have 10 attempts to guess the right number.</p>
-    </br>
-    <div id="wrapper">
-        <form class="form">
-            <label for="guessField" id="guess">Guess a number <img src="./images/thinking_face.gif" alt="thinking image" id="won_face"></label>
-            <input type="text" id="guessField" placeholder="" class="guessField" autocomplete="off" autofocus>
-            <input type="submit" id="subt" value="Submit guess" class="guessSubmit">
-            <input type="submit" id="restart" value="Restart Game" class="restartSubmit">
-        </form>
-
-        <div class="resultParas">
-            <p class="last_p">Previous Guesses: <span class="guesses"></span></p>
-            <p class="last_p">Guesses Remaining: <span class="lastResult">10</span></p>
-            <p class="lowOrHi"></p>
+                <div class="resultParas">
+                    <p class="last_p">Previous Guesses: <span class="guesses"></span></p>
+                    <p class="last_p">Guesses Remaining: <span class="lastResult">10</span></p>
+                    <p class="lowOrHi"></p>
+                </div>
+            </div>
         </div>
     </div>
-    </div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/script.js"></script>
 </body>
 </html>

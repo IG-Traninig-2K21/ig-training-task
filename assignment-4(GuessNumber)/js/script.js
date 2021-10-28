@@ -1,5 +1,4 @@
 let randomNumber = parseInt((Math.random()*100)+1);
-console.log("enter");
 console.log(randomNumber)
 const submit = document.querySelector('#subt');
 const userInput = document.querySelector('#guessField');
@@ -51,9 +50,10 @@ function checkGuess(guess){
     //Display clue if guess is too high or too low
     if (guess === randomNumber){
         displayMessage(`You guessed correctly!`);
-        document.getElementById("guess").innerHTML=`You Won!! <img src="./images/cheer-cheering.gif">`;
-        // winFace.src = "./images/cheering-cute.gif";
-        // documnt.createElement("img").
+        document.getElementById("guess").innerHTML=`You Won!! <img src="./images/cheer-cheering.gif"> <br>`;
+        userInput.style.display="none";
+        submit.style.display="none";
+        // restartBtn.style.display="inlineBlock";
         endGame();
     } else if (guess < randomNumber) {
         displayMessage(`Too low! Try again!`);
@@ -114,7 +114,6 @@ restartBtn.addEventListener('click', function(e){
         remaining.innerHTML = `${11 - numGuesses}  `;
         userInput.removeAttribute('disabled');
         startOver.removeChild(p);
-        playGame = true;
-        
+        playGame = true;       
 });
 
