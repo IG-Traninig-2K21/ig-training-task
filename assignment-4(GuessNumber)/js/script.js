@@ -6,12 +6,13 @@ const guessSlot = document.querySelector('.guesses');
 const remaining = document.querySelector('.lastResult');
 const startOver = document.querySelector('.resultParas');
 const lowOrHi = document.querySelector('.lowOrHi');
+const winFace = document.getElementById('won_face');
 const p = document.createElement('p');
 let previousGuesses = [];
 let numGuesses = 1;
 let playGame = true;
-let restartBtn=$('#restart')
-restartBtn.hide()
+let restartBtn=$('#restart');
+restartBtn.hide();
 
 if (playGame){
     subt.addEventListener('click', function(e){
@@ -49,6 +50,8 @@ function checkGuess(guess){
     //Display clue if guess is too high or too low
     if (guess === randomNumber){
         displayMessage(`You guessed correctly!`);
+        winFace.src = "./images/cheering-cute.gif";
+        document.getElementById("guess").innerText="You Won!!";
         endGame();
     } else if (guess < randomNumber) {
         displayMessage(`Too low! Try again!`);
