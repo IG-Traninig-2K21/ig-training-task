@@ -48,8 +48,10 @@ function generateButtons() {
 
 function handleGuess(chosenLetter) {
   guessed.indexOf(chosenLetter) === -1 ? guessed.push(chosenLetter) : null;
-  document.getElementById(chosenLetter).setAttribute('disabled', true);
-
+  // document.getElementById(chosenLetter).setAttribute('disabled', true);
+  document.getElementById(chosenLetter).style.backgroundColor="#303030";
+  document.getElementById(chosenLetter).style.color="#FFF";
+  document.getElementById(chosenLetter).style.border="none"
 
   if (answer.indexOf(chosenLetter) >= 0) {
     guessedWord();
@@ -92,7 +94,7 @@ function updateMistakes() {
 function reset() {
   mistakes = 0;
   guessed = [];
-  document.getElementById('hangmanPic').src = './images/0.jpg';
+  document.getElementById('hangmanPic').src = 'images/0.png';
 
   randomWord();
   guessedWord();
