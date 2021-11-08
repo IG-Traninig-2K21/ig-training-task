@@ -4,6 +4,7 @@ const ruler = document.getElementById('ruler');
 const rectangle = document.getElementById('rectangle');
 const circle = document.getElementById('circle');
 const color = document.getElementById('strokeColor');
+// const size = document.getElementById("brushSize");
 const main = document.getElementById('main');
 
 let canvas = document.getElementById('paintArea');
@@ -35,6 +36,10 @@ brush.addEventListener("click", function() {
     selectBrush = true;
     selectRuler = selectRect = selectCircle = false;
 })
+
+// size.addEventListener("input",function(){
+//     c.lineWidth=size.value;
+// })
 
 ruler.addEventListener("click", function() {
     console.log("Ruler is selected.");
