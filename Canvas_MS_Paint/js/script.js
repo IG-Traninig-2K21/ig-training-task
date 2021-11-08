@@ -1,155 +1,192 @@
+const clearAll = document.getElementById('clearCanvas');
+const brush = document.getElementById('brush');
+const ruler = document.getElementById('ruler');
+const rectangle = document.getElementById('rectangle');
+const circle = document.getElementById('circle');
+const color = document.getElementById('strokeColor');
+const main = document.getElementById('main');
 
-/*---------- more responsive code start here ------------*/
-var canvas = document.getElementById("mycanvas");
-canvas.width = window.innerWidth;     //it gives viewport width
-canvas.height = 500;
-var shapes = canvas.getContext("2d");  
-var currColor; 
+let canvas = document.getElementById('paintArea');
+canvas.style.width ='100%';
+canvas.style.height='100%';
+canvas.width  = canvas.offsetWidth;
+canvas.height = canvas.offsetHeight;
+let c = canvas.getContext('2d');
 
-/*---------- more responsive code start here ------------*/
+let strokeColor = "black";
+let fillColor = "transparent";
 
+let selectBrush = selectRuler = selectRect = selectCircle = false;
 
-function drawShapes(flag)
-{
-    $("#mycanvas").mousedown(function(event)
-    {
-        shapes.beginPath();
-        $("#mycanvas").mousemove(function(event){
-            shapes.lineTo(event.pageX, event.pageY);    // return co-ordinate according to mouse
-            console.log(event.pageX, event.pageY);
-            shapes.stroke();
+c.fillStyle = fillColor;
+c.strokeStyle = strokeColor;
 
-            if(flag=="false")
-            {
-                shapes.strokeStyle="white";
-            }
-        })
+clearAll.addEventListener("click", function() {
+    console.log("canvas clean");
+    c.clearRect(0, 0, canvas.width, canvas.height);
+});
 
-        $("#mycanvas").mouseup(function(event)
-        {
-            $("#mycanvas").unbind("mousemove");     //remove mousedown event
-            flag='true';
-        })
-    })
+brush.addEventListener("click", function() {
+    console.log("Brush is seleced.");
+    document.getElementById('brush').style.color = 'blue';
+    document.getElementById('ruler').style.color = 'black';
+    document.getElementById('rectangle').style.color = 'black';
+    document.getElementById('circle').style.color = 'black';
+    selectBrush = true;
+    selectRuler = selectRect = selectCircle = false;
+})
+
+ruler.addEventListener("click", function() {
+    console.log("Ruler is selected.");
+    document.getElementById('brush').style.color = 'black';
+    document.getElementById('ruler').style.color = 'blue';
+    document.getElementById('rectangle').style.color = 'black';
+    document.getElementById('circle').style.color = 'black';
+    selectRuler = true;
+    selectBrush = selectRect = selectCircle = false;
+})
+
+rectangle.addEventListener("click", function() {
+    console.log("Rectangle is selected.");
+    document.getElementById('brush').style.color = 'black';
+    document.getElementById('ruler').style.color = 'black';
+    document.getElementById('rectangle').style.color = 'blue';
+    document.getElementById('circle').style.color = 'black';
+    selectRect = true;
+    selectBrush = selectRuler = selectCircle = false;    
+})
+
+circle.addEventListener("click", function() {
+    console.log("Circle is selected.");
+    document.getElementById('brush').style.color = 'black';
+    document.getElementById('ruler').style.color = 'black';
+    document.getElementById('rectangle').style.color = 'black';
+    document.getElementById('circle').style.color = 'blue';
+    selectCircle = true;
+    selectBrush = selectRuler = selectRect = false;
+})
+
+color.addEventListener("input", function() {
+    strokeColor = color.value;
+    console.log(strokeColor);
+    c.fillStyle = fillColor;
+    c.strokeStyle = strokeColor;
+    document.getElementById('showColorName').innerHTML = color.value;
+})
+
+function showLiveCordinates(event) {
+    let livePosition = ("( "+(event.clientX-62)+" , "+(event.clientY-10)+" )");
+    document.getElementById('showLiveCursorPosition').innerHTML = livePosition;
+}
+let x = y = width = height = checkEndpoint = 0;
+
+function getStartCordinates(event) {
+    x = event.clientX - 62;
+    y = event.clientY - 10;
+    main.addEventListener("mousemove", showShape(event));
 }
 
-function colorChange(color)
-{
-    currColor = color.value;
-    shapes.strokeStyle= currColor;
+function showShape(event) {
+    let shape = "none";
+    if(selectRect) shape = "selectRect";
+    else if(selectRuler) shape = "selectRuler";
+    else if(selectCircle) shape = "selectCircle";
+    else if(selectBrush) shape = "selectBrush";
+    drawShape(shape,x, y, event.clientX-x-62, event.clientY-y-10);
+}
+function getEndCordinates(event) {
+    width = event.clientX - x - 62;
+    height = event.clientY - y - 10;
+    console.log("End cordinate: "+(width+x)+" "+(height+y))
+    let shape = "none";
+    if(selectRect) shape = "selectRect";
+    else if(selectRuler) shape = "selectRuler";
+    else if(selectCircle) shape = "selectCircle";
+    else if(selectBrush) shape = "selectBrush";
+    drawShape(shape, x, y, width, height);
 }
 
-function sliderCall(penSize)
-{
-    shapes.lineWidth = penSize.value;
-}
-
-function clearScreen()
-{
-    shapes.fillStyle = "white";
-    shapes.fillRect(0,0,window.innerWidth, 500);
-}
-
-
-var Rectangle = (function () {
-    function Rectangle(canvas) {
-        var inst=this;
-        this.canvas = canvas;
-        this.className= 'Rectangle';
-        this.isDrawing = false;
-        this.bindEvents();
+function drawShape(shape, x, y, width, height) {
+    switch(shape) {
+        case "selectBrush":
+            drawBrush(x, y, width, height);
+            break;
+        case "selectRuler":
+            drawRuler(x, y, width, height);
+            break;
+        case "selectRect":
+            drawRect(x, y, width, height);
+            break;
+        case "selectCircle":
+            drawCircle(x, y, width, height);
+            break;
+        default:
+            alert("select any tool");
+            break;        
     }
+}
 
-	 Rectangle.prototype.bindEvents = function() {
-    var inst = this;
-    inst.canvas.on('mouse:down', function(o) {
-      inst.onMouseDown(o);
-    });
-    inst.canvas.on('mouse:move', function(o) {
-      inst.onMouseMove(o);
-    });
-    inst.canvas.on('mouse:up', function(o) {
-      inst.onMouseUp(o);
-    });
-    inst.canvas.on('object:moving', function(o) {
-      inst.disable();
-    })
-  }
-    Rectangle.prototype.onMouseUp = function (o) {
-      var inst = this;
-      inst.disable();
+function drawBrush(dx, dy, width, height) {
+    console.log("brush works");
+    let isDrawing = false;
+        console.log("drawing started")
+        isDrawing = true;
+        c.beginPath();
+        c.moveTo(dx, dy);
+    canvas.onmousemove = function(event) {
+        if(isDrawing) {
+            console.log("drawing")
+            c.lineTo(event.clientX, event.clientY);
+            c.stroke();
+        }
     };
 
-    Rectangle.prototype.onMouseMove = function (o) {
-      var inst = this;
-      
-
-      if(!inst.isEnable()){ return; }
-      console.log("mouse move rectange");
-      var pointer = inst.canvas.getPointer(o.e);
-      var activeObj = inst.canvas.getActiveObject();
-
-      activeObj.stroke= 'red',
-      activeObj.strokeWidth= 5;
-      activeObj.fill = 'transparent';
-
-      if(origX > pointer.x){
-          activeObj.set({ left: Math.abs(pointer.x) }); 
-      }
-      if(origY > pointer.y){
-          activeObj.set({ top: Math.abs(pointer.y) });
-      }
-
-      activeObj.set({ width: Math.abs(origX - pointer.x) });
-      activeObj.set({ height: Math.abs(origY - pointer.y) });
-
-      activeObj.setCoords();
-      inst.canvas.renderAll();
-
+    canvas.onmouseup = function(e) {
+        isDrawing = false;
+        c.closePath();
+        console.log("draw completed")
     };
 
-    Rectangle.prototype.onMouseDown = function (o) {
-      var inst = this;
-      inst.enable();
+}
 
-      var pointer = inst.canvas.getPointer(o.e);
-      origX = pointer.x;
-      origY = pointer.y;
+function drawRuler(x, y, width, heigth) {
+    console.log(x+" "+y);
+    c.lineWidth = 5;
+    let x2 = width+x;
+    let y2 = height+y;
+    console.log("start")
+    c.beginPath();
+    c.moveTo(x, y);
+    c.lineTo(x2, y2);
+    c.stroke();
+    c.closePath();
+    console.log("end")
+}
 
-    	var rect = new fabric.Rect({
-          left: origX,
-          top: origY,
-          originX: 'left',
-          originY: 'top',
-          width: pointer.x-origX,
-          height: pointer.y-origY,
-          angle: 0,
-          transparentCorners: false,
-          hasBorders: false,
-          hasControls: false
-      });
+function drawRect(dx, dy, width, height) {
+    dx -= 21;
+    console.log("x: "+dx+" y: "+dy);
+    console.log("width: "+width+" Height: "+height);
+    c.fillRect(dx, dy, width, height);
+    c.strokeRect(dx, dy, width, height);
+}
 
-  	  inst.canvas.add(rect).setActiveObject(rect);
-    };
+function drawCircle(dx, dy, width, height) {
+    let radius = findRadius(width, height);
+    if(width == 0) radius = height;
+    c.beginPath();
+    c.arc(x, y, Math.abs(radius), 0, 2 * Math.PI);
+    c.stroke();
+    c.closePath(); 
+    console.log("Radius: "+Math.abs(radius));
+}
 
-    Rectangle.prototype.isEnable = function(){
-      return this.isDrawing;
-    }
+function findRadius(width, height) {
+    let p = width * width;
+    let b = height * height;
+    let sum = p+b;
+    let h = Math.sqrt(sum, 2);
+    console.log(p+" "+b+" "+h);
 
-    Rectangle.prototype.enable = function(){
-      this.isDrawing = true;
-    }
-
-    Rectangle.prototype.disable = function(){
-      this.isDrawing = false;
-    }
-
-    return Rectangle;
-}());
-
-
-
-// var canvas = new fabric.Canvas('canvas');
-var arrow = new Rectangle(canvas);
-
-// window.onload = drawShapes;
+    return h;
+}
