@@ -1,0 +1,12 @@
+body
+{
+   margin: 0;
+   /* overflow: hidden; */
+   background-color: aqua;
+}
+canvas
+{
+background-color: white;
+cursor: crosshair;
+/* border: 1px solid black; */
+}
