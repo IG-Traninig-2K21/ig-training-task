@@ -1,0 +1,102 @@
+*{
+padding: 0;
+margin: 0;
+box-sizing: border-box;
+}
+html {
+background-color: #E4E9FD;
+background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);
+min-height: 100vh;
+font-family: 'helvetica neue';
+}
+
+h1 {
+color: #fff;
+padding: 10px;
+text-transform: capitalize;
+}
+  
+.box {
+max-width: 400px;
+margin: 50px auto;
+background: white;
+border-radius: 5px;
+box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+}
+
+#heading {
+background-color: #A683E3;
+text-align: center;
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+form input{
+    min-width: 20rem;
+    height: 35px;
+    border: none;
+    border-bottom: 3px solid #A683E3;
+    outline: none;
+    padding: 1rem;
+    margin-bottom: 2.5rem;
+    font-size: 20px;
+    margin-top: 2rem;
+}
+button.todo-btn{
+    height: 3rem;
+    min-width: 2.8rem;
+    outline: none;
+    border: none;
+    background-color: #A683E3;
+    cursor: pointer;
+    border-radius: 50%;
+    box-shadow: 5px 5px 15px -5px rgb(0 0 0 / 30%);
+    margin-left: 0.7rem;
+}
+.fas.icon{
+    color: white;
+    cursor: pointer;        
+}
+button.todo-btn:hover{
+    background-color: palevioletred;
+}
+.todo-list{
+    list-style-type: none;
+    min-width: 20%;
+}
+.todo{
+    background-color: #F0D9FF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all .5s ease;
+    padding: 0 1rem;
+    padding-bottom: 1rem;
+    margin: 0.5rem;
+}
+.todo-listItem{
+    flex: 1;
+    padding: 0px 10px;
+}
+.checkicon, .deleteicon{
+    border: none;
+    outline: none;
+    padding: 10px;
+    background-color: rgba(85, 173, 85, 0.773);
+    color: white;
+    font-size: 12px;
+    cursor: pointer;
+}
+.deleteicon{
+    background-color: rgb(243, 64, 64);
+}
+.fa-check, .fa-trash{
+    pointer-events: none;
+}
+.completed{
+    text-decoration: line-through;
+    opacity: 0.5;
+}
