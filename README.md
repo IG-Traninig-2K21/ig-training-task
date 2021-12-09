@@ -8,7 +8,7 @@
 * Assignment-6 (Arkanoid Game) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-6(arkanoid%20game)/)
 * Assignment-7 (Canvas-MS-Paint) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-7(Canvas-Ms-Paint)/)
 * Assignment-8 (Covid App) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-8(covid-app)/src/)
-* Assignment-9 (Memory-Card-Game) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-9(Memory-Card-Game)/)
-* Assignment-10 (Spin-Wheel) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-10(spin-wheel)/)
-* Assignment-11 (Particles) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-11(Particles)/)
+* Assignment-9 (Memory-Card-Game) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-9(Memory-Card-Game)/src/)
+* Assignment-10 (Spin-Wheel) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-10(spin-wheel)/src/)
+* Assignment-11 (Particles) - [click here](https://ig-traninig-2k21.github.io/ig-training-task/assignment-11(Particles)/src/)
 
