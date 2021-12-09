@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="css/style.css">
+    <title>Painting tools</title>
+</head>
+<body>
+    <div class="container">
+        <div class="tools">
+            <div id="tools">
+                <div id="clearCanvas">
+                    clear <br> Screen
+                </div>
+                <button type="submit" class="tools-btn" id="brush" onclick="document.getElementById('showToolName').innerHTML = 'Brush';">
+                    <i class="fas fa-brush icon" title="Brush"></i>
+                </button>
+                <button type="submit" class="tools-btn" id="ruler" onclick="document.getElementById('showToolName').innerHTML = 'Ruler';">
+                    <i class="fas fa-pencil-ruler icon" title="Pencil Ruler"></i>
+                </button>
+                <button type="submit" class="tools-btn" id="rectangle" onclick="document.getElementById('showToolName').innerHTML = 'Rectangle';">
+                    <i class="fas fa-square icon" title="Rectangle"></i>
+                </button>
+                <button type="submit" class="tools-btn" id="circle" onclick="document.getElementById('showToolName').innerHTML = 'Circle';">
+                    <i class="fas fa-circle icon" title="Circle"></i>
+                </button>
+            </div>
+            <div class="colors">
+                <input type="color" name="Strokecolor" id="strokeColor">
+                <!-- <label>Brush size</label> -->
+                <!-- <input type="range" min="1" max="50" id="brushSize"> -->
+            </div>
+        </div>
+        <div class="main" id="main" onmousedown="getStartCordinates(event)" onmouseup="getEndCordinates(event)">
+            <canvas id="paintArea" onmousemove="showLiveCordinates(event)"></canvas>
+            <div class="detailDisplayer">
+                <div class="showToolName">
+                    <label id="toolName" class="show">Tool selected: </label>
+                    <span id="showToolName">None</span>
+                </div>
+                <div class="showColorName">
+                    <label id="colorName" class="show">Color: </label>
+                    <span id="showColorName">Black</span>
+                </div>
+                <div class="showLiveCursorPosition" >
+                    <label class="show" id="showLiveCursorPosition">( 0, 0 )</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/script.js">
+    </script>
+</body>
+</html>
